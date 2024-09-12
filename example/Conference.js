@@ -19,7 +19,7 @@ var Ionicons_1 = require("react-native-vector-icons/Ionicons");
 var react_native_2 = require("react-native");
 var react_native_incall_manager_1 = require("react-native-incall-manager");
 var publishStreamId;
-function Conference() {
+ function Conference() {
     var defaultRoomName = 'room1';
     var webSocketUrl = 'ws://localhost:8081/WebRTCAppEE/websocket';
     //or webSocketUrl: 'wss://server.com:5443/WebRTCAppEE/websocket',

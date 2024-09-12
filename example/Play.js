@@ -4,7 +4,7 @@ exports.default = App;
 var react_1 = require("react");
 var react_native_1 = require("react-native");
 var react_native_ant_media_1 = require("@antmedia/react-native-ant-media");
-function App() {
+export function Playing() {
     var defaultStreamName = 'stream1';
     var webSocketUrl = 'ws://localhost:8081/WebRTCAppEE/websocket';
     //or webSocketUrl: 'wss://server.com:5443/WebRTCAppEE/websocket',

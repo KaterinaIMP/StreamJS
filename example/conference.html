@@ -8,17 +8,7 @@
 	<script src="js/external/adapter-latest.js"></script>
 	<script src="js/external/jquery-3.4.1.min.js"></script>
 	<script src="js/external/notify.min.js" crossorigin="anonymous"></script>
-	<script type = "text/javascript" src="Conference.js"></script>
-	<script type = "text/javascript" src="Play.js"></script>
-	<script type = "text/javascript" src="./js/external/"></script>
 	<link rel="stylesheet" href="css/common.css" />
-	
-	<script type = "module" src="play_webrtc.html"></script>
-	
-	<script type="text/javascript">
-		import { Conference } from "Conference.js";
-		import { startPlaying } from "play_webrtc.html";
-	</script> 
 	<style>
 		video {
 			width: 100%;
@@ -137,8 +127,7 @@
 		</div>
 		<div class="alert alert-primary text-center" role="alert" style="margin-top:-2em">
 			Something ready to use? <br/>
-			<button class="btn btn-primary" disabled id="conference" onclick="Conference()">WebSocket</button>
-			<button class="btn btn-primary" disabled id="play" onclick="startPlaying()">Play</button>
+			<a href="https://antmedia.io/marketplace/circle-video-conferencing-tool/">Circle: Online Video Conferencing</a>
 			<br/>
 		</div>
 		<div id="players" class="row">
@@ -158,7 +147,7 @@
 						   placeholder="Type room name">
 				</div>
 				<div style="padding:5px">
-					<button class="btn btn-primary"  id="join_publish_button" >Join Room</button>
+					<button class="btn btn-primary" disabled id="join_publish_button">Join Room</button>
 					<button class="btn btn-primary" disabled id="stop_publish_button">Leave Room</button>
 				</div>
 
@@ -222,7 +211,7 @@
 								   placeholder="Write your message to send publisher/players">
 						</div>
 						<div class="form-group col-sm-2">
-							<button type="button" id="send" class="btn btn-outline-primary btn-block" onclick="Conference()">Send</button>
+							<button type="button" id="send" class="btn btn-outline-primary btn-block">Send</button>
 						</div>
 					</div>
 				</div>
@@ -295,7 +284,7 @@
 	}
 
 	var join_publish_button = document.getElementById("join_publish_button");
-	join_publish_button.addEventListener("click", join, false);
+	join_publish_button.addEventListener("click", joinRoom, false);
 	var stop_publish_button = document.getElementById("stop_publish_button");
 	stop_publish_button.addEventListener("click", leaveRoom, false);
 	var turn_off_camera_button = document.getElementById("turn_off_camera_button");
@@ -414,9 +403,7 @@
 			console.log("Could not send the notification because data channel is not open.");
 		}
 	}
-	function join() {
-		webRTCAdaptor.join(streamNameBox.value);
-	}
+
 	function sendData() {
 		try {
 			var iceState = webRTCAdaptor.iceConnectionState(publishStreamId);
@@ -428,10 +415,8 @@
 				webRTCAdaptor.sendData(publishStreamId, JSON.stringify(notEvent));
 				$("#all-messages").append("Sent: " + msg + "<br>");
 				$("#dataTextbox").val("");
-				
 			}
 			else {
-				alert("iceState "+iceState);
 				$.notify("WebRTC playing is not active. Please click Start Playing first", {
 					autoHideDelay: 5000,
 					className: 'error',

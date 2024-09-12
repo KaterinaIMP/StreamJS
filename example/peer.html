@@ -85,7 +85,7 @@
 	var streamNameBox = document.getElementById("streamName");
 
 	function join() {
-		alert("streamNameBox.value "+streamNameBox.value);
+		//alert("streamNameBox.value "+streamNameBox.value);
 		webRTCAdaptor.join(streamNameBox.value);
 	}
 
@@ -148,7 +148,7 @@
 		  remoteVideoId: "remoteVideo",
 		  callback: function(info) {
 			
-			alert("info "+info);
+			//alert("info "+info);
 			  if (info == "initialized") {
 				  console.log("initialized");
 				  join_button.disabled = false;
